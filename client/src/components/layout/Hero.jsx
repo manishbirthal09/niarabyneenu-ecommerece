@@ -3,7 +3,7 @@ import heroImg from "../../assets/hero.png";
 
 export default function Hero() {
   return (
-    <section className="relative h-[55vh] sm:h-[70vh] md:h-screen overflow-hidden">
+    <section className="relative h-[62vh] sm:h-[70vh] md:h-screen overflow-hidden">
       {/* Background image */}
       <img
         src={heroImg}
