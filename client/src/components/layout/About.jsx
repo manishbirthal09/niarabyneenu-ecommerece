@@ -36,7 +36,7 @@ export default function AboutNiara() {
             <img
               src={aboutImage}
               alt="Niara by Neenu saree draped on a model, showcasing traditional craftsmanship"
-              className="w-full h-full object-cover aspect-[4/5]"
+              className="w-full h-full object-top aspect-[4/5]"
             />
           </div>
         </div>
