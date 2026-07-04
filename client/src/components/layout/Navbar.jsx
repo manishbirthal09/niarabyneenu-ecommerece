@@ -72,7 +72,7 @@ export default function Navbar() {
 
         {/* Logo — center */}
         <Link to="/" className="shrink-0 justify-self-center col-start-2">
-          <img src={logo} alt="Niara by Neenu" className="h-20 md:h-11  w-auto max-w-none" />
+          <img src={logo} alt="Niara by Neenu" className="h-18 md:h-15  w-auto max-w-none" />
         </Link>
 
         {/* Right nav — desktop */}
