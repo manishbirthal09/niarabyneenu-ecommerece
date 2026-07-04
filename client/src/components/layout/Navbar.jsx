@@ -61,6 +61,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center  h-18 md:h-14">
         {/* Left nav — desktop */}
+         <div className="md:hidden col-start-1 w-[52px]" />
         <nav className="hidden md:flex items-center gap-9 col-start-1">
           {leftLinks.map((link) => (
             <span key={link.name} className="group">
@@ -71,7 +72,7 @@ export default function Navbar() {
 
         {/* Logo — center */}
         <Link to="/" className="shrink-0 justify-self-center col-start-2">
-          <img src={logo} alt="Niara by Neenu" className="h-9 md:h-10 w-auto" />
+          <img src={logo} alt="Niara by Neenu" className="h-20 md:h-11  w-auto max-w-none" />
         </Link>
 
         {/* Right nav — desktop */}
