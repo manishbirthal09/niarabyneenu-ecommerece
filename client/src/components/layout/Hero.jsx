@@ -12,7 +12,7 @@ export default function Hero() {
       />
 
  {/* Gradient — right side pe dark, left clear  */}
-      <div className="absolute inset-0 bg-gradient-to-l from-[#16271C]/95 via-[#16271C]/60 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-l from-[#16271C]/95 via-[#16271C]/60 to-transparent" />
 {/* Content — right aligned */}
 <div className="relative z-10 h-full flex flex-col items-end text-right  ml-auto px-6 md:px-24 max-w-2xl pb-14 md:pb-20">
   <p className="uppercase text-xs tracking-[0.3em] text-white/60 mb-3 mt-5">
@@ -66,7 +66,7 @@ export default function Hero() {
           A saree is not just an outfit — it's a feeling, a tradition, a timeless beauty.
         </p>
        Gradient — sirf left side pe, right clear
-      <div className="absolute inset-0 bg-gradient-to-r from-[#16271C]/85 via-[#16271C]/40 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#16271C]/85 via-[#16271C]/40 to-transparent" />
 
       {/* Content — left aligned 
       <div className="relative z-10 h-full flex flex-col justify-center px-10 md:px-20 max-w-lg">

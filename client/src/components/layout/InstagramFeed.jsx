@@ -1,9 +1,10 @@
 import React from "react";
 import image1 from "../../assets/Instagram1.png";
 import image2 from "../../assets/Instagram2.png";
-import image3 from "../../assets/Instagram3.png";
+import image3 from "../../assets/Instagram3.jpg";
 import image4 from "../../assets/Instagram4.png";
 import image5 from "../../assets/Instagram5.png";
+import image6 from "../../assets/Instagram6.jpg";
 // import { Instagram } from "lucide-react";
 
 // Swap these src values with your actual Instagram photo URLs when ready.
@@ -14,6 +15,7 @@ const posts = [
   { src: image3, alt: "Niara by Neenu Instagram post" },
   { src: image4, alt: "Niara by Neenu Instagram post" },
   { src: image5, alt: "Niara by Neenu Instagram post" },
+  { src: image6, alt: "Niara by Neenu Instagram post" },
 ];
 
 const INSTAGRAM_URL = "https://www.instagram.com/niara_by_neenu/?hl=en";
@@ -34,14 +36,14 @@ export default function InstagramFeed() {
           Daily drapes, new arrivals, and a closer look at every saree we curate
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
           {posts.map((post, i) => (
             <a
               key={i}
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-2xl aspect-4/5"
+              className="group relative block overflow-hidden rounded-2xl aspect-square"
             >
               <img
                 src={post.src}
