@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import logo from "../../assets/logo.png";
+import logo2 from "../../assets/logo2.png";
 
 const leftLinks = [
   { name: "Home", path: "/" },
@@ -72,7 +73,7 @@ export default function Navbar() {
 
         {/* Logo — center */}
         <Link to="/" className="shrink-0 justify-self-center col-start-2">
-          <img src={logo} alt="Niara by Neenu" className="h-28 md:h-15  w-auto max-w-none" />
+          <img src={logo2} alt="Niara by Neenu" className="h-28 md:h-15  w-auto max-w-none" />
         </Link>
 
         {/* Right nav — desktop */}
