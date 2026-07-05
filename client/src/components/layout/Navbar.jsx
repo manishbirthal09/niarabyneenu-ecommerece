@@ -59,9 +59,9 @@ export default function Navbar() {
         scrolled ? "shadow-[0_1px_0_0_rgba(255,255,255,0.08)]" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center  h-18 md:h-14">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center  h-28 md:h-14">
         {/* Left nav — desktop */}
-         <div className="md:hidden col-start-1 w-[52px]" />
+         <div className="md:hidden col-start-1 w-13" />
         <nav className="hidden md:flex items-center gap-9 col-start-1">
           {leftLinks.map((link) => (
             <span key={link.name} className="group">
@@ -72,7 +72,7 @@ export default function Navbar() {
 
         {/* Logo — center */}
         <Link to="/" className="shrink-0 justify-self-center col-start-2">
-          <img src={logo} alt="Niara by Neenu" className="h-18 md:h-15  w-auto max-w-none" />
+          <img src={logo} alt="Niara by Neenu" className="h-28 md:h-15  w-auto max-w-none" />
         </Link>
 
         {/* Right nav — desktop */}
@@ -94,7 +94,7 @@ export default function Navbar() {
         {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-5 col-start-3 justify-self-end">
           <Link to="/cart" aria-label="Cart" className="text-white/80">
-            <ShoppingBag size={19} strokeWidth={1.5} />
+            <ShoppingBag size={22} strokeWidth={1.5} />
           </Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -102,14 +102,14 @@ export default function Navbar() {
             className="text-white/90 relative w-6 h-6"
           >
             <Menu
-              size={22}
+              size={23}
               strokeWidth={1.5}
               className={`absolute inset-0 transition-all duration-300 ${
                 menuOpen ? "opacity-0 rotate-45" : "opacity-100 rotate-0"
               }`}
             />
             <X
-              size={22}
+              size={23}
               strokeWidth={1.5}
               className={`absolute inset-0 transition-all duration-300 ${
                 menuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-45"
