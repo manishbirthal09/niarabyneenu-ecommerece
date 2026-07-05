@@ -60,7 +60,7 @@ export default function Navbar() {
         scrolled ? "shadow-[0_1px_0_0_rgba(255,255,255,0.08)]" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center  h-24 md:h-14">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center  h-24 md:h-18">
         {/* Left nav — desktop */}
          <div className="md:hidden col-start-1 w-13" />
         <nav className="hidden md:flex items-center gap-9 col-start-1">
@@ -73,7 +73,7 @@ export default function Navbar() {
 
         {/* Logo — center */}
         <Link to="/" className="shrink-0 justify-self-center col-start-2">
-          <img src={logo4} alt="Niara by Neenu" className="h-24 md:h-15  w-auto max-w-none" />
+          <img src={logo4} alt="Niara by Neenu" className="h-24 md:h-18  w-auto max-w-none" />
         </Link>
 
         {/* Right nav — desktop */}
