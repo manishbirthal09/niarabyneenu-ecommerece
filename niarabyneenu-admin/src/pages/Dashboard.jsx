@@ -60,24 +60,26 @@ export default function Dashboard() {
         <p className="text-sm text-gray-500">Loading stats...</p>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
             {cards.map(({ label, value, icon: Icon, color }) => (
-              <div key={label} className="bg-white rounded-lg shadow-sm p-5">
+              <div key={label} className="bg-white rounded-lg shadow-sm p-4 md:p-5">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${color}`}>
                   <Icon size={20} />
                 </div>
-                <p className="text-2xl font-semibold text-gray-900">{value}</p>
+                <p className="text-xl md:text-2xl font-semibold text-gray-900 break-words">{value}</p>
                 <p className="text-sm text-gray-500 mt-1">{label}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-5">
+          <div className="bg-white rounded-lg shadow-sm p-4 md:p-5">
             <h2 className="font-medium text-gray-900 mb-4">Recent Orders</h2>
             {recentOrders.length === 0 ? (
               <p className="text-sm text-gray-500">No orders yet.</p>
             ) : (
-              <table className="w-full text-sm">
+                <div className="overflow-x-auto">
+  <table className="min-w-[650px] w-full text-sm">
+              
                 <thead className="text-left text-gray-500 border-b">
                   <tr>
                     <th className="pb-2">Order ID</th>
@@ -97,6 +99,7 @@ export default function Dashboard() {
                   ))}
                 </tbody>
               </table>
+              </div>
             )}
           </div>
         </>

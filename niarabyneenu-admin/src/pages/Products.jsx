@@ -28,15 +28,15 @@ export default function Products() {
 
   return (
     <AdminLayout>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <h1 className="text-2xl font-semibold">Products</h1>
         <button
           onClick={() => {
             setEditing(null);
             setShowForm(true);
           }}
-          className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm"
-        >
+          className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm w-full sm:w-auto"
+          >
           + Add Product
         </button>
       </div>
@@ -44,7 +44,8 @@ export default function Products() {
       {loading ? (
         <p className="text-sm text-gray-500">Loading...</p>
       ) : (
-        <table className="w-full bg-white rounded-lg overflow-hidden shadow-sm text-sm">
+          <div className="overflow-x-auto bg-white rounded-lg shadow-sm">
+  <table className="min-w-[850px] w-full text-sm">
           <thead className="bg-gray-100 text-left text-gray-600">
             <tr>
               <th className="p-3">Image</th>
@@ -59,13 +60,15 @@ export default function Products() {
             {products.map((p) => (
               <tr key={p._id} className="border-t">
                 <td className="p-3">
+                      <div className="flex gap-3 flex-wrap">
                   {p.images?.[0]?.url || p.images?.[0] ? (
                     <img
                       src={p.images[0].url || p.images[0]}
                       alt={p.name}
-                      className="w-10 h-10 rounded object-cover"
+                      className="w-12 h-12 rounded object-cover"
                     />
                   ) : null}
+                  </div>
                 </td>
                 <td className="p-3">{p.name}</td>
                 <td className="p-3 text-gray-500">{p.category?.name}</td>
@@ -89,6 +92,7 @@ export default function Products() {
             ))}
           </tbody>
         </table>
+            </div>
       )}
 
       {showForm && (

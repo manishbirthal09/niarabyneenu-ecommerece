@@ -30,10 +30,10 @@ export default function CategoryForm({ category, onClose, onSaved }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/40 flex items-start md:items-center justify-center z-50 overflow-y-auto p-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg w-full max-w-md space-y-4"
+        className="bg-white rounded-lg w-full max-w-lg p-4 md:p-6 space-y-4 my-6"
       >
         <h2 className="text-lg font-semibold">
           {category ? "Edit Category" : "Add Category"}
@@ -45,7 +45,7 @@ export default function CategoryForm({ category, onClose, onSaved }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full border rounded-md px-3 py-2 mt-1 text-sm"
+            className="w-full border rounded-md px-3 py-2 mt-1 text-sm min-h-[100px] resize-y"
           />
         </div>
 
@@ -68,15 +68,15 @@ export default function CategoryForm({ category, onClose, onSaved }) {
           />
         </div>
 
-        <div className="flex justify-end gap-3 pt-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 text-sm">
+    <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-2">
+          <button type="button" onClick={onClose} className="px-4 py-2 text-sm border rounded-md w-full sm:w-auto">
             Cancel
           </button>
           <button
             type="submit"
             disabled={saving}
-            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50"
-          >
+            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50 w-full sm:w-auto"
+             >
             {saving ? "Saving..." : "Save"}
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../api/axios";
 import AdminLayout from "../components/AdminLayout";
 
@@ -52,8 +52,9 @@ export default function Orders() {
       ) : orders.length === 0 ? (
         <p className="text-sm text-gray-500">No orders yet.</p>
       ) : (
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto bg-white rounded-lg shadow-sm">
+  <table className="min-w-[900px] w-full text-sm">
+        
             <thead className="bg-gray-100 text-left text-gray-600">
               <tr>
                 <th className="p-3">Order ID</th>
@@ -67,7 +68,7 @@ export default function Orders() {
             </thead>
             <tbody>
               {orders.map((order) => (
-                <>
+                <React.Fragment key={order._id}>
                   <tr key={order._id} className="border-t">
                     <td className="p-3 font-mono text-xs">
                       {order._id.slice(-8).toUpperCase()}
@@ -90,8 +91,8 @@ export default function Orders() {
                         value={order.status}
                         disabled={updatingId === order._id}
                         onChange={(e) => handleStatusChange(order._id, e.target.value)}
-                        className={`text-xs px-2 py-1 rounded border-0 font-medium ${statusColors[order.status]}`}
-                      >
+                        className={`w-full min-w-[120px] text-xs px-2 py-1 rounded border font-medium ${statusColors[order.status]}`}
+                        >
                         {STATUS_OPTIONS.map((s) => (
                           <option key={s} value={s}>
                             {s}
@@ -117,13 +118,13 @@ export default function Orders() {
                   {expandedId === order._id && (
                     <tr className="border-t bg-gray-50">
                       <td colSpan={7} className="p-4">
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
                             <h3 className="font-medium mb-2">Shipping Address</h3>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 break-words">
                               {order.customer?.name} — {order.customer?.phone}
                             </p>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 break-words">
                               {order.customer?.address}, {order.customer?.city} -{" "}
                               {order.customer?.pincode}
                             </p>
@@ -140,7 +141,7 @@ export default function Orders() {
                       </td>
                     </tr>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </tbody>
           </table>

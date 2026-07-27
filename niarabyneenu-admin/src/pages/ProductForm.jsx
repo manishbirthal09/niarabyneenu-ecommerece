@@ -44,11 +44,11 @@ export default function ProductForm({ product, onClose, onSaved }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 overflow-y-auto py-8">
-      <form
+    <div className="fixed inset-0 bg-black/40 flex items-start md:items-center justify-center z-50 overflow-y-auto p-4">
+    <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg w-full max-w-lg space-y-4"
-      >
+        className="bg-white rounded-lg w-full max-w-2xl p-4 md:p-6 space-y-4 my-6"
+        >
         <h2 className="text-lg font-semibold">
           {product ? "Edit Product" : "Add Product"}
         </h2>
@@ -74,7 +74,7 @@ export default function ProductForm({ product, onClose, onSaved }) {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="text-sm text-gray-600">Price</label>
             <input
@@ -117,7 +117,7 @@ export default function ProductForm({ product, onClose, onSaved }) {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="text-sm text-gray-600">Color</label>
             <input
@@ -149,15 +149,15 @@ export default function ProductForm({ product, onClose, onSaved }) {
           />
         </div>
 
-        <div className="flex justify-end gap-3 pt-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 text-sm">
+        <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-2">
+          <button type="button" onClick={onClose} className="px-4 py-2 text-sm border rounded-md w-full sm:w-auto">
             Cancel
           </button>
           <button
             type="submit"
             disabled={saving}
-            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50"
-          >
+            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm disabled:opacity-50 w-full sm:w-auto"
+           >
             {saving ? "Saving..." : "Save"}
           </button>
         </div>
