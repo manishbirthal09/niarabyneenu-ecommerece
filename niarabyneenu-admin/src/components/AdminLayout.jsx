@@ -37,7 +37,7 @@ export default function AdminLayout({ children }) {
             <Menu size={24} />
           </button>
 
-          <h1 className="font-semibold">NiarabyNeenu Admin</h1>
+          <h1 className="font-semibold text-[#16271C]">NiarabyNeenu Admin</h1>
 
           <div className="w-6" />
         </header>

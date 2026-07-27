@@ -35,7 +35,7 @@ export default function Products() {
             setEditing(null);
             setShowForm(true);
           }}
-          className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm w-full sm:w-auto"
+          className="bg-[#16271C] text-white px-4 py-2 rounded-md text-sm w-full sm:w-auto"
           >
           + Add Product
         </button>
