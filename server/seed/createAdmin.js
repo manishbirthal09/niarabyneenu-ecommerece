@@ -7,7 +7,7 @@ const run = async () => {
   await mongoose.connect(process.env.MONGO_URI);
 
   const email = "admin@niarabyneenu.com"; // change as needed
-  const password = "ChangeThisPassword123"; // change as needed
+  const password = "NiaraAdminPassword123"; // change as needed ChangeThisPassword123
 
   const existing = await Admin.findOne({ email });
   if (existing) {
