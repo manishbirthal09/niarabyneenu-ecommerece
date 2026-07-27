@@ -13,6 +13,8 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const app = express();
 app.use(cors({
   origin: [
+     "https://niarabyneenu.com",
+    "https://www.niarabyneenu.com",
     "https://niarabyneenu-ecommerce.vercel.app",
     "https://niarabyneenu-ecommerece.vercel.app",
     "http://localhost:5173",
