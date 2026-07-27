@@ -66,7 +66,7 @@ function Card({ r }) {
       className="shrink-0 w-[320px] mx-4 hover:-translate-y-1 transition-all duration-300 opacity-85"
       style={{
         background: "#e8e8e8",
-        borderRadius: "12px",
+        borderRadius: "10px",
         padding: "20px",
         boxShadow: "0 2px 12px rgba(0,0,0,0.12)",
         position: "relative",

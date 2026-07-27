@@ -13,6 +13,7 @@ exports.getProducts = async (req, res) => {
     if (search) query.name = { $regex: search, $options: "i" };
 
     const products = await Product.find(query)
+    .populate("category", "name slug")
       .skip((page - 1) * limit)
       .limit(Number(limit))
       .sort({ createdAt: -1 });
@@ -28,7 +29,8 @@ exports.getProducts = async (req, res) => {
 // GET /api/products/:id
 exports.getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id)
+    .populate("category", "name slug");
     if (!product) return res.status(404).json({ message: "Product not found" });
     res.json(product);
   } catch (err) {

@@ -3,7 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import logo from "../../assets/logo.png";
 import logo4 from "../../assets/logo4.png";
-
+import { useCart } from "../../context/CartContext";
+import { useCustomerAuth } from "../../context/CustomerAuthContext";   // 👈 NEW import
+import { User } from "lucide-react";   // 👈 NEW import (icon ke liye)
 const leftLinks = [
   { name: "Home", path: "/" },
   { name: "Collections", path: "/products" },
@@ -41,7 +43,8 @@ function NavLink({ to, children }) {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+const { itemCount } = useCart();
+ const { isAuthenticated, customer } = useCustomerAuth();
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -84,19 +87,42 @@ export default function Navbar() {
             </span>
           ))}
           <Link
-            to="/"
+            to="/cart"
             aria-label="Cart"
-            className="text-white/70 hover:text-white transition-colors duration-300 ml-1"
+            className="relative text-white/70 hover:text-white transition-colors duration-300 ml-1"
           >
             <ShoppingBag size={18} strokeWidth={1.5} />
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-white text-[#16271C] text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
           </Link>
+          <Link
+    to={isAuthenticated ? "/profile" : "/login"}
+    aria-label="Profile"
+    className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-1.5"
+  >
+    <User size={18} strokeWidth={1.5} />
+    {isAuthenticated && (
+      <span className="text-xs">{customer?.name?.split(" ")[0]}</span>
+    )}
+  </Link>
         </div>
 
         {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-5 col-start-3 justify-self-end">
-          <Link to="/cart" aria-label="Cart" className="text-white/80">
+          <Link to="/cart" aria-label="Cart" className="relative text-white/80">
             <ShoppingBag size={22} strokeWidth={1.5} />
+             {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-white text-[#16271C] text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
           </Link>
+          <Link to={isAuthenticated ? "/profile" : "/login"} aria-label="Profile" className="text-white/80">
+  <User size={20} strokeWidth={1.5} />
+</Link>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}

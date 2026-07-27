@@ -9,6 +9,9 @@ exports.protect = (req, res, next) => {
   const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (decoded.type !== "admin") {                              // 👈 NEW
+      return res.status(403).json({ message: "Not authorized as admin" });
+    }
     req.adminId = decoded.id;
     next();
   } catch (err) {

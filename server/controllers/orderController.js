@@ -4,7 +4,7 @@ const Order = require("../models/Order");
 exports.createOrder = async (req, res) => {
   try {
     const { items, totalAmount, customer, paymentMethod } = req.body;
-    const order = await Order.create({ items, totalAmount, customer, paymentMethod });
+    const order = await Order.create({customerRef: req.customer.id, items, totalAmount, customer, paymentMethod });
     res.status(201).json(order);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -38,6 +38,16 @@ exports.updateOrderStatus = async (req, res) => {
     const { status } = req.body;
     const order = await Order.findByIdAndUpdate(req.params.id, { status }, { new: true });
     res.json(order);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// GET /api/orders/my-orders  (customer only)
+exports.getMyOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ customerRef: req.customer.id }).sort({ createdAt: -1 });
+    res.json(orders);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

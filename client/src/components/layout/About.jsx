@@ -32,7 +32,7 @@ export default function AboutNiara() {
         {/* Left column — image */}
         <div className="relative">
           {/* <div className="absolute -inset-3 border border-[#16271C] rounded-[2rem] pointer-events-none" />*/}
-          <div className="overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_-15px_rgba(122,31,43,0.25)]"> 
+          <div className="overflow-hidden rounded-[0.4rem] shadow-[0_20px_60px_-15px_rgba(122,31,43,0.25)]"> 
             <img
               src={aboutImage}
               alt="Niara by Neenu saree draped on a model, showcasing traditional craftsmanship"
