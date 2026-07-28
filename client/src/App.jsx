@@ -12,6 +12,10 @@ import Register from "./pages/Register";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Profile from "./pages/Profile";
+import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
+import RefundPolicy from "./pages/policies/RefundPolicy";
+import ReturnPolicy from "./pages/policies/ReturnPolicy";
+import ShippingPolicy from "./pages/policies/ShippingPolicy";
 
 export default function App() {
   return (
@@ -30,6 +34,10 @@ export default function App() {
             <Route path="/checkout" element={<Checkout />} />      
             <Route path="/order-success/:orderId" element={<OrderSuccess />} />
              <Route path="/profile" element={<Profile />} />
+             <Route path="/privacy" element={<PrivacyPolicy />} />
+<Route path="/refund_policy" element={<RefundPolicy />} />
+<Route path="/returns" element={<ReturnPolicy />} />
+<Route path="/shipping" element={<ShippingPolicy />} />
       </Routes>
     </BrowserRouter>
     </CustomerAuthProvider>

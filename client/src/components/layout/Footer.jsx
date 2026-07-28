@@ -116,14 +116,24 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+
+<div>
+  <h4 className="font-serif text-base mb-4">Support</h4>
+  <ul className="space-y-2.5 text-sm text-white/65">
+    <li><a href="/shipping" className="hover:text-white transition-colors">Shipping</a></li>
+    <li><a href="/returns" className="hover:text-white transition-colors">Returns & Exchanges</a></li>
+    <li><a href="/refund_policy" className="hover:text-white transition-colors">Refund Policy</a></li>   {/* 👈 NEW */}
+    <li><a href="/faq" className="hover:text-white transition-colors">FAQs</a></li>
+  </ul>
+</div>
+        {/* <div>
           <h4 className="font-serif text-base mb-4">Support</h4>
           <ul className="space-y-2.5 text-sm text-white/65">
             <li><a href="/shipping" className="hover:text-white transition-colors">Shipping</a></li>
             <li><a href="/returns" className="hover:text-white transition-colors">Returns & Exchanges</a></li>
             <li><a href="/faq" className="hover:text-white transition-colors">FAQs</a></li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom bar */}
@@ -132,7 +142,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Niara by Neenu. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="/privacy" className="hover:text-white/80 transition-colors">Privacy Policy</a>
-            <a href="/terms" className="hover:text-white/80 transition-colors">Terms of Service</a>
+            {/* <a href="/terms" className="hover:text-white/80 transition-colors">Terms of Service</a> */}
           </div>
         </div>
       </div>
