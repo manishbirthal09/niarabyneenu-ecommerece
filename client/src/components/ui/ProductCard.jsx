@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
           <Button variant="outline" className="flex-1 text-xs" onClick={handleAddToCart}>
             Add to Cart
           </Button>
-          <Button className="flex-1 text-xs" onClick={handleBuyNow}>
+          <Button className="flex-1 text-xs bg-[#16271C] text-white" onClick={handleBuyNow}>
             Buy Now
           </Button>
         </div>

@@ -73,6 +73,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import FilterSidebar from "../components/layout/FilterSidebar";
 import ProductCard from "../components/ui/ProductCard";
 import { Search } from "lucide-react";
+import ProductCardSkeleton from "../components/ui/ProductCardSkeleton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -126,8 +127,12 @@ export default function Products() {
 
         <div className="flex-1">
           {loading ? (
-            <p className="text-gray-500 text-sm">Loading products...</p>
-          ) : filteredProducts.length === 0 ? (
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
+    {Array.from({ length: 6 }).map((_, i) => (
+      <ProductCardSkeleton key={i} />
+    ))}
+  </div>
+) : filteredProducts.length === 0 ? (
             <p className="text-gray-500 text-sm">No sarees match your filters.</p>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">

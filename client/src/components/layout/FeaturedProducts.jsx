@@ -1,5 +1,5 @@
   import { useEffect, useState } from "react";
-
+import ProductCardSkeleton from "../ui/ProductCardSkeleton"; 
 import api from "../../api/axios";
 import { useCart } from "../../context/CartContext";
 import Card from "../ui/Card";
@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState([]);
+   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
@@ -15,6 +16,7 @@ export default function FeaturedProducts() {
     api.get("/products", { params: { limit: 100 } }).then(({ data }) => {
       const featured = data.products.filter((p) => p.isFeatured);
       setProducts(featured.length > 0 ? featured : data.products.slice(0, 4));
+      setLoading(false); 
     });
   }, []);
 
@@ -29,7 +31,7 @@ export default function FeaturedProducts() {
     navigate("/checkout");
   };
 
-  if (products.length === 0) return null;
+  if (!loading && products.length === 0) return null;
 
   return (
     <section className="py-16 bg-white overflow-hidden">
@@ -38,7 +40,10 @@ export default function FeaturedProducts() {
           Featured Collection
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {products.map((p) => {
+           {loading ? (
+    Array.from({ length: 4 }).map((_, i) => <ProductCardSkeleton key={i} />)
+  ) : (
+          products.map((p) => {
             const displayPrice = p.discountPrice || p.price;
             const hasDiscount = p.discountPrice && p.discountPrice < p.price;
             const discountPct = hasDiscount
@@ -95,9 +100,12 @@ export default function FeaturedProducts() {
                   </div>
                 </div>
               </Card>
-            );
-          })}
-        </div>
+            
+          );
+          })
+        )}
+      </div>
+      
       </div>
       <div className="max-w-6xl mx-auto px-5 md:px-8 text-center">
         <a

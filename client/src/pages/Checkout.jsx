@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useCustomerAuth } from "../context/CustomerAuthContext";
@@ -7,6 +7,7 @@ import api from "../api/axios";
 export default function Checkout() {
   const { cart, totalAmount, cartId } = useCart();
   const { isAuthenticated, customer } = useCustomerAuth();
+  const [paymentMethod, setPaymentMethod] = useState("cod");
   const navigate = useNavigate();
   const [address, setAddress] = useState({
     name: customer?.name || "",
@@ -19,10 +20,15 @@ export default function Checkout() {
   const [error, setError] = useState("");
 
   // redirect to login if not authenticated
+  useEffect(() => {
   if (!isAuthenticated) {
-    navigate("/login", { state: { from: "/checkout" }, replace: true });
-    return null;
-  }
+    navigate("/login", { state: { from: "/checkout" }, replace: true });}
+     }, [isAuthenticated, navigate]);
+
+if (!isAuthenticated) {
+  return null;
+}
+
 
   if (!cart.items || cart.items.length === 0) {
     return (
@@ -51,11 +57,16 @@ export default function Checkout() {
         items,
         totalAmount,
         customer: address,
-        paymentMethod: "cod", // 👈 PhonePe pending, using COD for now
+        paymentMethod, // 👈 PhonePe pending, using COD for now
       });
 
       // clear cart after order (optional — depends on your cart clearing strategy)
-      navigate(`/order-success/${order._id}`);
+      if (paymentMethod === "phonepe") {
+  const { data: paymentData } = await api.post(`/payment/initiate/${order._id}`);
+  window.location.href = paymentData.redirectUrl;
+} else {
+  navigate(`/order-success/${order._id}`);
+}
     } catch (err) {
       setError(err.response?.data?.message || "Failed to place order");
     } finally {
@@ -137,16 +148,46 @@ export default function Checkout() {
           </div>
         </div>
 
-        <div className="bg-yellow-50 text-yellow-800 text-xs p-3 rounded">
+
+<div className="mb-2">
+  <h3 className="text-sm font-medium text-[#16271C] mb-3">Payment Method</h3>
+  <div className="space-y-2">
+    <label className="flex items-center gap-3 border rounded-md px-4 py-3 cursor-pointer">
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="cod"
+        checked={paymentMethod === "cod"}
+        onChange={(e) => setPaymentMethod(e.target.value)}
+      />
+      <span className="text-sm">Cash on Delivery</span>
+    </label>
+    <label className="flex items-center gap-3 border rounded-md px-4 py-3 cursor-pointer">
+      <input
+        type="radio"
+        name="paymentMethod"
+        value="phonepe"
+        checked={paymentMethod === "phonepe"}
+        onChange={(e) => setPaymentMethod(e.target.value)}
+      />
+      <span className="text-sm">Pay Online (UPI / Card / Wallet)</span>
+    </label>
+  </div>
+</div>
+        {/* <div className="bg-yellow-50 text-yellow-800 text-xs p-3 rounded">
           Online payment (PhonePe) coming soon — orders are currently Cash on Delivery only.
-        </div>
+        </div> */}
 
         <button
           type="submit"
           disabled={placing}
           className="w-full bg-[#16271C] text-white py-3 rounded text-sm font-medium hover:opacity-90 disabled:opacity-50"
         >
-          {placing ? "Placing order..." : "Place Order (Cash on Delivery)"}
+         {placing
+  ? "Processing..."
+  : paymentMethod === "phonepe"
+  ? "Proceed to Pay"
+  : "Place Order (Cash on Delivery)"}
         </button>
       </form>
     </div>
