@@ -1,4 +1,5 @@
 const Order = require("../models/Order");
+const { sendOrderNotification } = require("../utils/emailNotifier");  
 
 // POST /api/orders
 exports.createOrder = async (req, res) => {
@@ -6,6 +7,7 @@ exports.createOrder = async (req, res) => {
     const { items, totalAmount, customer, paymentMethod } = req.body;
     const order = await Order.create({customerRef: req.customer.id, items, totalAmount, customer, paymentMethod });
     res.status(201).json(order);
+    sendOrderNotification(order);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
