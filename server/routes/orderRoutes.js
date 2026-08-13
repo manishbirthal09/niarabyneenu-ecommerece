@@ -1,19 +1,4 @@
-// const express = require("express");
-// const router = express.Router();
-// const { protect } = require("../middleware/authMiddleware");
-// const {
-//   createOrder,
-//   getOrders,
-//   getOrderById,
-//   updateOrderStatus,
-// } = require("../controllers/orderController");
 
-// router.post("/", createOrder); // public — customer places order
-// router.get("/", protect, getOrders); // admin only
-// router.get("/:id", getOrderById);
-// router.put("/:id/status", protect, updateOrderStatus); // admin only
-
-// module.exports = router;
 
 const express = require("express");
 const router = express.Router();
@@ -24,7 +9,7 @@ const {
   getOrders,
   getOrderById,
   updateOrderStatus,
-  getMyOrders, // 👈 NEW import
+  getMyOrders, 
 } = require("../controllers/orderController");
 
 router.post("/", protectCustomer, createOrder);           // 👈 CHANGED — login required now

@@ -122,8 +122,8 @@ export default function Footer() {
   <ul className="space-y-2.5 text-sm text-white/65">
     <li><a href="/shipping" className="hover:text-white transition-colors">Shipping</a></li>
     <li><a href="/returns" className="hover:text-white transition-colors">Returns & Exchanges</a></li>
-    <li><a href="/refund_policy" className="hover:text-white transition-colors">Refund Policy</a></li>   {/* 👈 NEW */}
-    <li><a href="/faq" className="hover:text-white transition-colors">FAQs</a></li>
+    <li><a href="/refund_policy" className="hover:text-white transition-colors">Refund Policy</a></li>  
+    <li><a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
   </ul>
 </div>
         {/* <div>
@@ -141,7 +141,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-5 md:px-8  flex flex-col-reverse md:flex-row items-center justify-between gap-3 text-xs text-white/45">
           <p>© {new Date().getFullYear()} Niara by Neenu. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="/privacy" className="hover:text-white/80 transition-colors">Privacy Policy</a>
+            <a href="/faq" className="hover:text-white/80 transition-colors">FAQs</a>
             {/* <a href="/terms" className="hover:text-white/80 transition-colors">Terms of Service</a> */}
           </div>
         </div>

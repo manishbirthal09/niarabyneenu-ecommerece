@@ -54,10 +54,10 @@ const orderSchema = new mongoose.Schema(
       city: String,
       pincode: String,
     },
-    paymentMethod: { type: String, enum: ["phonepe", "cod"], default: "phonepe" }, // 👈 CHANGED
+    paymentMethod: { type: String, enum: ["phonepe", "cod"], default: "phonepe" }, 
     paymentStatus: { type: String, enum: ["pending", "paid", "failed"], default: "pending" },
-    phonepeMerchantTransactionId: String, // 👈 CHANGED (was razorpayOrderId)
-    phonepeTransactionId: String,          // 👈 CHANGED (was razorpayPaymentId)
+    phonepeMerchantTransactionId: String, 
+    phonepeTransactionId: String,          
     status: {
       type: String,
       enum: ["pending", "confirmed", "shipped", "delivered", "cancelled"],

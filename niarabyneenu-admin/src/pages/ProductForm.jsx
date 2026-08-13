@@ -9,8 +9,7 @@ export default function ProductForm({ product, onClose, onSaved }) {
     price: product?.price || "",
     stock: product?.stock || "",
     category: product?.category?._id || "",
-    color: product?.color || "",
-    fabric: product?.fabric || "",
+    
   });
   const [images, setImages] = useState([]);
   const [saving, setSaving] = useState(false);
@@ -117,8 +116,8 @@ export default function ProductForm({ product, onClose, onSaved }) {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* <div>
             <label className="text-sm text-gray-600">Color</label>
             <input
               name="color"
@@ -126,8 +125,8 @@ export default function ProductForm({ product, onClose, onSaved }) {
               onChange={handleChange}
               className="w-full border rounded-md px-3 py-2 mt-1 text-sm"
             />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <label className="text-sm text-gray-600">Fabric</label>
             <input
               name="fabric"
@@ -135,8 +134,8 @@ export default function ProductForm({ product, onClose, onSaved }) {
               onChange={handleChange}
               className="w-full border rounded-md px-3 py-2 mt-1 text-sm"
             />
-          </div>
-        </div>
+          </div> 
+        </div> */}
 
         <div>
           <label className="text-sm text-gray-600">Images</label>
