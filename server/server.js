@@ -16,8 +16,8 @@ app.use(cors({
   origin: [
      "https://niarabyneenu.com",
     "https://www.niarabyneenu.com",
-    "https://niarabyneenu-ecommerce.vercel.app",
-    "https://niarabyneenu-ecommerece.vercel.app",
+    "https://manishbirthal09-niarabyneenu-ecomme.vercel.app",
+    "https://manishbirthal09-niarabyneenu-ecomme-pi.vercel.app",
     "http://localhost:5173",
   ],
   credentials: true,
