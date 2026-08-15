@@ -18,6 +18,8 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_APP_PASSWORD,
   },
   family: 4,
+  connectionTimeout: 10000,
+socketTimeout: 10000,
 });
 
 exports.sendOrderNotification = async (order) => {
