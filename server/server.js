@@ -19,6 +19,8 @@ app.use(cors({
     "https://manishbirthal09-niarabyneenu-ecomme.vercel.app",
     "https://manishbirthal09-niarabyneenu-ecomme-pi.vercel.app",
     "http://localhost:5173",
+    "http://localhost:5175",
+    "http://localhost:5000",
   ],
   credentials: true,
 }));

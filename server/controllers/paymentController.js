@@ -2,6 +2,7 @@ const { randomUUID } = require('crypto');
 const { StandardCheckoutPayRequest } = require('pg-sdk-node');
 const phonepeClient = require('../utils/phonepeClient');
 const Order = require('../models/Order');
+const { sendOrderNotification } = require('../utils/emailNotifier');
 
 exports.initiatePayment = async(req,res) => {
     try{
@@ -45,6 +46,7 @@ exports.checkPaymentStatus = async (req, res) => {
     if (status.state === "COMPLETED") {
       order.paymentStatus = "paid";
       order.status = "confirmed";
+      sendOrderNotification(order);
     } else if (status.state === "FAILED") {
       order.paymentStatus = "failed";
     }
